@@ -5,6 +5,6 @@ const todoSchema = new mongoose.Schema({
   description: String,
 });
 
-const Todo = mongoose.model("Todo", todoSchema);
+const Todo = mongoose.models.Todo || mongoose.model("Todo", todoSchema);
 
 export default Todo;
