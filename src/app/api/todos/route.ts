@@ -1,20 +1,19 @@
 import connectToDB from "@/db";
 import Todo from "@/db/models/todos";
-import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(request: NextRequest) {
+export async function GET(request: Request) {
   try {
     await connectToDB();
 
     const allTasks = await Todo.find({});
 
-    return NextResponse.json({
+    return Response.json({
       success: true,
       data: allTasks,
     });
   } catch (error) {
     console.log(error);
-    return NextResponse.json({
+    return Response.json({
       success: false,
       message: "Couldn't fetch tasks",
     });
