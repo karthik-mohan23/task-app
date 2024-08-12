@@ -13,7 +13,8 @@ async function page() {
       <section>
         <h3 className="text-2xl text-center">All Tasks</h3>
         <div className="flex flex-wrap gap-5 py-10">
-          {tasks.length > 0 &&
+          {tasks &&
+            tasks.length > 0 &&
             tasks.map((task) => (
               <div
                 key={task._id}
