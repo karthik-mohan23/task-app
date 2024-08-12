@@ -1,6 +1,6 @@
 import connectToDB from "@/db";
 import Todo from "@/db/models/todos";
-
+export const dynamic = "force-dynamic";
 export async function GET(request: Request) {
   try {
     await connectToDB();
