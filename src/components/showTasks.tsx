@@ -4,7 +4,7 @@ import { fetchTasks } from "@/lib/utils";
 import TaskDeleteButton from "@/components/taskDeleteButton";
 import { useEffect, useState } from "react";
 
-async function ShowTasks() {
+function ShowTasks() {
   const [tasks, setTasks] = useState<TaskType[]>([]);
 
   useEffect(() => {
