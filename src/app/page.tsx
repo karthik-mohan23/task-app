@@ -10,7 +10,7 @@ function Home() {
       </h1>
       <Link href={"/todos"}>
         <Button variant="contained" endIcon={<SendIcon />}>
-          Let's get started
+          Let&apos;s get started
         </Button>
       </Link>
     </main>
