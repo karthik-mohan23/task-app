@@ -3,7 +3,7 @@ export const fetchTasks = async () => {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}/api/todos`,
       {
-        cache: "no-cache",
+        cache: "no-store",
       }
     );
     const json = await response.json();
