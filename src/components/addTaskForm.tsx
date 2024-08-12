@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -5,6 +6,7 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
+import { useRouter } from "next/navigation";
 
 type AddTaskDialogProps = {
   open: boolean;
@@ -17,6 +19,7 @@ export default function AddTaskDialog({
 }: AddTaskDialogProps) {
   const [title, setTitle] = React.useState("");
   const [description, setDescription] = React.useState("");
+  const router = useRouter();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -33,7 +36,9 @@ export default function AddTaskDialog({
 
       const json = await response.json();
       handleClose();
-      console.log(json);
+      setTitle("");
+      setDescription("");
+      router.refresh();
     } catch (error) {
       console.log(error);
       alert("error creating task");
