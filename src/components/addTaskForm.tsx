@@ -29,10 +29,13 @@ export default function AddTaskDialog({
 
     const data = { title, description };
     try {
-      const response = await fetch("/api/add-todo", {
-        method: "POST",
-        body: JSON.stringify(data),
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/add-todo`,
+        {
+          method: "POST",
+          body: JSON.stringify(data),
+        }
+      );
 
       const json = await response.json();
       handleClose();
