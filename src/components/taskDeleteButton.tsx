@@ -23,6 +23,7 @@ function TaskDeleteButton({ todoId }: { todoId: string }) {
 
   const handleDelete = async (taskId: string) => {
     await deleteTask(taskId);
+    setOpen(false);
     router.refresh();
   };
   return (
