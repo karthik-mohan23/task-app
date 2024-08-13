@@ -1,6 +1,7 @@
 import { TaskType } from "@/lib/types";
 import { fetchTasks } from "@/lib/utils";
 import TaskDeleteButton from "@/components/taskDeleteButton";
+import UpdateTaskForm from "./updateTaskForm";
 
 async function ShowTasks() {
   const tasks: TaskType[] = await fetchTasks();
@@ -15,6 +16,7 @@ async function ShowTasks() {
             className="border border-white/70 rounded-lg px-4 py-2 hover:scale-105 transition flex flex-col gap-3">
             <p>{task.title}</p>
             <p>{task.description}</p>
+            <UpdateTaskForm todoId={task._id} />
             <TaskDeleteButton todoId={task._id} />
           </div>
         ))}
