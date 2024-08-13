@@ -13,6 +13,27 @@ export default function UpdateTaskForm({ todoId }: { todoId: string }) {
   const [title, setTitle] = React.useState("");
   const [description, setDescription] = React.useState("");
 
+  const fetchTaskDetails = async (todoId: string) => {
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/todos/${todoId}`,
+        {
+          cache: "no-store",
+        }
+      );
+      const json = await response.json();
+      console.log(json);
+      if (!json.success) {
+        throw new Error("Error fetching task");
+      }
+      const { title, description } = json.data;
+      setTitle(title);
+      setDescription(description);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const router = useRouter();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -42,7 +63,8 @@ export default function UpdateTaskForm({ todoId }: { todoId: string }) {
     }
   };
 
-  const handleClickOpen = () => {
+  const handleClickOpen = async () => {
+    await fetchTaskDetails(todoId);
     setOpen(true);
   };
 
